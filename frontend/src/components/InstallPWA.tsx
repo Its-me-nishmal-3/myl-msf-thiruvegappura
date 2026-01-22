@@ -69,7 +69,7 @@ const InstallPWA: React.FC = () => {
                     animate={{ opacity: 1, y: 0 }}
                     className="bg-white/90 backdrop-blur-xl border border-sky-100 rounded-3xl p-8 text-center shadow-2xl"
                 >
-                    <div className="w-24 h-24 bg-gray-100 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-inner overflow-hidden">>
+                    <div className="w-24 h-24 bg-gray-100 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-inner overflow-hidden">
                         <img src="/pwa-192x192.png" alt="App Icon" className="w-full h-full object-cover" />
                     </div>
 
