@@ -343,12 +343,12 @@ const PosterGenerator: React.FC = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-950 text-white p-4 flex flex-col items-center">
+        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-sky-50 text-gray-900 p-4 flex flex-col items-center">
 
             {/* Cropper Modal */}
             {isCropping && tempImage && (
-                <div className="fixed inset-0 z-50 bg-black flex flex-col">
-                    <div className="relative flex-1 w-full bg-gray-900">
+                <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex flex-col">
+                    <div className="relative flex-1 w-full bg-black">
                         <Cropper
                             image={tempImage}
                             crop={crop}
@@ -360,7 +360,7 @@ const PosterGenerator: React.FC = () => {
                         />
                     </div>
                     {/* Controls */}
-                    <div className="bg-gray-900 p-6 flex flex-col gap-4 border-t border-gray-800">
+                    <div className="bg-white p-6 flex flex-col gap-4 border-t border-gray-200">
                         <div className="flex items-center gap-4">
                             <span className="text-sm font-medium">Zoom</span>
                             <input
@@ -373,13 +373,13 @@ const PosterGenerator: React.FC = () => {
                                 onChange={(e) => {
                                     setZoom(Number(e.target.value));
                                 }}
-                                className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-blue-500"
+                                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-500"
                             />
                         </div>
                         <div className="flex gap-3">
                             <button
                                 onClick={() => { setIsCropping(false); setTempImage(null); }}
-                                className="flex-1 py-3 px-4 rounded-xl bg-gray-800 text-white font-medium hover:bg-gray-700 transition-colors flex items-center justify-center gap-2"
+                                className="flex-1 py-3 px-4 rounded-xl bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 transition-colors flex items-center justify-center gap-2"
                             >
                                 <X className="w-5 h-5" /> Cancel
                             </button>
@@ -397,7 +397,7 @@ const PosterGenerator: React.FC = () => {
 
             <button
                 onClick={() => navigate('/')}
-                className="self-start text-gray-400 hover:text-white flex items-center gap-2 mb-6"
+                className="self-start text-gray-600 hover:text-gray-900 flex items-center gap-2 mb-6"
             >
                 <ArrowLeft className="w-5 h-5" /> Back
             </button>
@@ -407,9 +407,9 @@ const PosterGenerator: React.FC = () => {
             </h1>
 
             {/* Inputs */}
-            <div className="w-full max-w-md bg-gray-900 rounded-2xl p-4 space-y-4 mb-8 border border-gray-800">
+            <div className="w-full max-w-md bg-white/80 backdrop-blur-md rounded-2xl p-4 space-y-4 mb-8 border border-sky-100 shadow-xl">
                 <div className="flex flex-col sm:flex-row gap-3">
-                    <div className="relative w-full sm:flex-1 bg-gray-800 rounded-xl overflow-hidden hover:ring-2 ring-blue-500/50 transition-all cursor-pointer h-14 flex items-center justify-center border border-gray-700">
+                    <div className="relative w-full sm:flex-1 bg-gray-50 rounded-xl overflow-hidden hover:ring-2 ring-blue-500/50 transition-all cursor-pointer h-14 flex items-center justify-center border border-gray-200">
                         <input
                             type="file"
                             className="absolute inset-0 opacity-0 cursor-pointer z-10"
@@ -418,7 +418,7 @@ const PosterGenerator: React.FC = () => {
                         />
                         <div className="flex items-center gap-2 pointer-events-none">
                             <Upload className="w-5 h-5 text-blue-500" />
-                            <span className="text-xs font-bold text-gray-300">
+                            <span className="text-xs font-bold text-gray-600">
                                 {userImage ? 'Change Photo' : 'Upload Photo'}
                             </span>
                         </div>
@@ -428,14 +428,14 @@ const PosterGenerator: React.FC = () => {
                         type="text"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        className="w-full sm:flex-[2] bg-gray-800 border border-gray-700 rounded-xl px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 h-14"
+                        className="w-full sm:flex-[2] bg-white border border-gray-200 rounded-xl px-4 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 h-14"
                         placeholder="Enter your name"
                     />
                 </div>
             </div>
 
             {/* PREVIEW AREA */}
-            <div className="w-full max-w-sm relative rounded-xl overflow-hidden shadow-2xl border border-gray-800 bg-gray-900">
+            <div className="w-full max-w-sm relative rounded-xl overflow-hidden shadow-2xl border border-sky-100 bg-white">
                 {!templateImage && (
                     <div className="h-96 flex items-center justify-center text-gray-500 gap-2">
                         <Loader2 className="animate-spin" /> Loading Template...
@@ -456,7 +456,7 @@ const PosterGenerator: React.FC = () => {
                 <button
                     onClick={handleDownload}
                     disabled={!isCanvasReady || !userImage}
-                    className="flex-1 bg-gray-800 hover:bg-gray-700 text-white font-bold py-4 rounded-xl shadow-lg flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all active:scale-95"
+                    className="flex-1 bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 font-bold py-4 rounded-xl shadow-lg flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all active:scale-95"
                 >
                     {isGenerating ? <Loader2 className="animate-spin" /> : <Download />}
                     {isGenerating ? 'Wait...' : 'Download'}

@@ -119,25 +119,25 @@ const AdminDashboard: React.FC = () => {
     };
 
     return (
-        <div className="p-6 max-w-7xl mx-auto min-h-screen pb-24 space-y-8">
+        <div className="p-6 max-w-7xl mx-auto min-h-screen pb-24 space-y-8 bg-gradient-to-br from-slate-50 via-white to-sky-50 text-gray-900">
             <header className="flex flex-col md:flex-row justify-between items-center gap-4">
                 <div>
                     <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-sky-400">
                         Admin Dashboard
                     </h1>
-                    <p className="text-gray-400 text-sm">Overview & Management</p>
+                    <p className="text-gray-500 text-sm">Overview & Management</p>
                 </div>
                 <div className="flex items-center gap-4">
-                    <div className="flex bg-white/5 p-1 rounded-lg">
+                    <div className="flex bg-gray-100 p-1 rounded-lg border border-gray-200">
                         <button
                             onClick={() => setActiveTab('analytics')}
-                            className={`px-4 py-2 rounded-md text-sm transition-colors ${activeTab === 'analytics' ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-white'}`}
+                            className={`px-4 py-2 rounded-md text-sm transition-colors ${activeTab === 'analytics' ? 'bg-blue-600 text-white' : 'text-gray-600 hover:text-gray-900'}`}
                         >
                             Analytics
                         </button>
                         <button
                             onClick={() => setActiveTab('payments')}
-                            className={`px-4 py-2 rounded-md text-sm transition-colors ${activeTab === 'payments' ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-white'}`}
+                            className={`px-4 py-2 rounded-md text-sm transition-colors ${activeTab === 'payments' ? 'bg-blue-600 text-white' : 'text-gray-600 hover:text-gray-900'}`}
                         >
                             Payments
                         </button>
@@ -155,53 +155,53 @@ const AdminDashboard: React.FC = () => {
                 <div className="space-y-8 animate-in fade-in zoom-in duration-300">
                     {/* Stats Cards */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                        <div className="glass-panel p-6 flex flex-col items-center text-center">
+                        <div className="bg-white/90 backdrop-blur-xl border border-sky-100 p-6 flex flex-col items-center text-center rounded-2xl shadow-lg">
                             <div className="p-3 bg-blue-500/20 rounded-full mb-2">
                                 <DollarSign className="text-blue-400" size={24} />
                             </div>
-                            <h3 className="text-gray-400 text-xs uppercase tracking-wider">Total Revenue</h3>
-                            <p className="text-2xl font-bold text-white mt-1">₹{analytics.overall.totalAmount.toLocaleString()}</p>
+                            <h3 className="text-gray-500 text-xs uppercase tracking-wider">Total Revenue</h3>
+                            <p className="text-2xl font-bold text-gray-900 mt-1">₹{analytics.overall.totalAmount.toLocaleString()}</p>
                         </div>
 
-                        <div className="glass-panel p-6 flex flex-col items-center text-center">
+                        <div className="bg-white/90 backdrop-blur-xl border border-sky-100 p-6 flex flex-col items-center text-center rounded-2xl shadow-lg">
                             <div className="p-3 bg-blue-500/20 rounded-full mb-2">
                                 <Package className="text-blue-400" size={24} />
                             </div>
-                            <h3 className="text-gray-400 text-xs uppercase tracking-wider">Total Packs</h3>
-                            <p className="text-2xl font-bold text-white mt-1">{analytics.overall.totalQuantity}</p>
+                            <h3 className="text-gray-500 text-xs uppercase tracking-wider">Total Packs</h3>
+                            <p className="text-2xl font-bold text-gray-900 mt-1">{analytics.overall.totalQuantity}</p>
                         </div>
 
-                        <div className="glass-panel p-6 flex flex-col items-center text-center">
+                        <div className="bg-white/90 backdrop-blur-xl border border-sky-100 p-6 flex flex-col items-center text-center rounded-2xl shadow-lg">
                             <div className="p-3 bg-purple-500/20 rounded-full mb-2">
                                 <Users className="text-purple-400" size={24} />
                             </div>
-                            <h3 className="text-gray-400 text-xs uppercase tracking-wider">Total Orders</h3>
-                            <p className="text-2xl font-bold text-white mt-1">{analytics.overall.totalOrders}</p>
+                            <h3 className="text-gray-500 text-xs uppercase tracking-wider">Total Orders</h3>
+                            <p className="text-2xl font-bold text-gray-900 mt-1">{analytics.overall.totalOrders}</p>
                         </div>
 
-                        <div className="glass-panel p-6 flex flex-col items-center text-center">
+                        <div className="bg-white/90 backdrop-blur-xl border border-sky-100 p-6 flex flex-col items-center text-center rounded-2xl shadow-lg">
                             <div className="p-3 bg-amber-500/20 rounded-full mb-2">
                                 <TrendingUp className="text-amber-400" size={24} />
                             </div>
-                            <h3 className="text-gray-400 text-xs uppercase tracking-wider">Avg Order Value</h3>
-                            <p className="text-2xl font-bold text-white mt-1">₹{Math.round(analytics.overall.avgOrderValue || 0)}</p>
+                            <h3 className="text-gray-500 text-xs uppercase tracking-wider">Avg Order Value</h3>
+                            <p className="text-2xl font-bold text-gray-900 mt-1">₹{Math.round(analytics.overall.avgOrderValue || 0)}</p>
                         </div>
                     </div>
 
                     {/* Charts Section */}
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         {/* Ward Performance */}
-                        <div className="glass-panel p-6">
+                        <div className="bg-white/90 backdrop-blur-xl border border-sky-100 p-6 rounded-2xl shadow-lg">
                             <h3 className="text-lg font-bold mb-6">Unit Performance</h3>
                             <div className="h-80 w-full">
                                 <ResponsiveContainer width="100%" height="100%">
                                     <BarChart data={analytics.wardStats} layout="vertical" margin={{ left: 20 }}>
-                                        <CartesianGrid strokeDasharray="3 3" stroke="#ffffff10" />
-                                        <XAxis type="number" stroke="#9ca3af" fontSize={12} tickFormatter={(val) => `₹${val / 1000}k`} />
-                                        <YAxis dataKey="_id" type="category" stroke="#9ca3af" fontSize={12} width={60} />
+                                        <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                                        <XAxis type="number" stroke="#64748b" fontSize={12} tickFormatter={(val) => `₹${val / 1000}k`} />
+                                        <YAxis dataKey="_id" type="category" stroke="#64748b" fontSize={12} width={60} />
                                         <RechartsTooltip
-                                            contentStyle={{ backgroundColor: '#1e293b', borderColor: '#ffffff20', color: '#fff' }}
-                                            itemStyle={{ color: '#fff' }}
+                                            contentStyle={{ backgroundColor: '#fff', borderColor: '#e2e8f0', color: '#1e293b' }}
+                                            itemStyle={{ color: '#1e293b' }}
                                             formatter={(value?: number) => [`₹${(value || 0).toLocaleString()}`, 'Revenue']}
                                         />
                                         <Bar dataKey="amount" fill="#3b82f6" radius={[0, 4, 4, 0]} barSize={20} />
@@ -211,17 +211,17 @@ const AdminDashboard: React.FC = () => {
                         </div>
 
                         {/* Daily Trend */}
-                        <div className="glass-panel p-6">
+                        <div className="bg-white/90 backdrop-blur-xl border border-sky-100 p-6 rounded-2xl shadow-lg">
                             <h3 className="text-lg font-bold mb-6">Daily Growth (Last 7 Days)</h3>
                             <div className="h-80 w-full">
                                 <ResponsiveContainer width="100%" height="100%">
                                     <LineChart data={analytics.dailyStats}>
-                                        <CartesianGrid strokeDasharray="3 3" stroke="#ffffff10" />
-                                        <XAxis dataKey="_id" stroke="#9ca3af" fontSize={12} />
-                                        <YAxis stroke="#9ca3af" fontSize={12} />
+                                        <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                                        <XAxis dataKey="_id" stroke="#64748b" fontSize={12} />
+                                        <YAxis stroke="#64748b" fontSize={12} />
                                         <RechartsTooltip
-                                            contentStyle={{ backgroundColor: '#1e293b', borderColor: '#ffffff20', color: '#fff' }}
-                                            itemStyle={{ color: '#fff' }}
+                                            contentStyle={{ backgroundColor: '#fff', borderColor: '#e2e8f0', color: '#1e293b' }}
+                                            itemStyle={{ color: '#1e293b' }}
                                             formatter={(value?: number) => [`₹${(value || 0).toLocaleString()}`, 'Revenue']}
                                         />
                                         <Line type="monotone" dataKey="amount" stroke="#3b82f6" strokeWidth={3} dot={{ fill: '#3b82f6' }} />
@@ -238,37 +238,37 @@ const AdminDashboard: React.FC = () => {
                     {/* Filters */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div className="relative">
-                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" size={20} />
                             <input
                                 type="text"
                                 placeholder="Search Name, Mobile, or Payment ID"
                                 value={search}
                                 onChange={(e) => setSearch(e.target.value)}
-                                className="glass-input w-full pl-10"
+                                className="w-full pl-10 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-900"
                             />
                         </div>
 
                         <select
                             value={wardFilter}
                             onChange={(e) => setWardFilter(e.target.value)}
-                            className="glass-input w-full bg-[#1e293b] text-white"
+                            className="w-full pl-4 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-900"
                         >
-                            <option value="All" className="bg-[#1e293b] text-white">All Units</option>
+                            <option value="All" className="bg-white text-gray-900">All Units</option>
                             {[
                                 'തിരുവേഗപ്പുറ', 'മൂച്ചിത്തറ', 'വെസ്റ്റ് കൈപ്പുറം', 'ഫാറൂഖ് നഗർ', 'കൈപ്പുറം',
                                 'വിളത്തൂർ', 'തെക്കുമ്മല', 'മാഞ്ഞാമ്പ്ര', 'പൈലിപ്പുറം', 'നെടുങ്ങോട്ടൂർ',
                                 'നോർത്ത് കൈപ്പുറം', 'മനക്കൽ പീടിക', 'ഞാവളുംകാട്', 'ചെമ്പ്ര', 'Other'
                             ].map((ward, i) => (
-                                <option key={i} value={ward} className="bg-[#1e293b] text-white">{ward}</option>
+                                <option key={i} value={ward} className="bg-white text-gray-900">{ward}</option>
                             ))}
                         </select>
                     </div>
 
                     {/* Table */}
-                    <div className="glass-panel overflow-hidden">
+                    <div className="bg-white/90 backdrop-blur-xl border border-sky-100 rounded-2xl shadow-lg overflow-hidden">
                         <div className="overflow-x-auto">
                             <table className="w-full text-left">
-                                <thead className="bg-white/5 text-gray-400 border-b border-white/5">
+                                <thead className="bg-gray-50 text-gray-600 border-b border-gray-200">
                                     <tr>
                                         <th className="p-4">Date</th>
                                         <th className="p-4">Name</th>
@@ -280,19 +280,19 @@ const AdminDashboard: React.FC = () => {
                                         <th className="p-4 hidden md:table-cell">Payment ID</th>
                                     </tr>
                                 </thead>
-                                <tbody className="divide-y divide-white/5">
+                                <tbody className="divide-y divide-gray-100">
                                     {payments.length === 0 ? (
                                         <tr>
                                             <td colSpan={7} className="p-8 text-center text-gray-500">No payments found</td>
                                         </tr>
                                     ) : (
                                         payments.map((p) => (
-                                            <tr key={p._id} className="hover:bg-white/5 transition-colors">
-                                                <td className="p-4 text-sm text-gray-300">{new Date(p.createdAt).toLocaleDateString()}</td>
+                                            <tr key={p._id} className="hover:bg-gray-50 transition-colors">
+                                                <td className="p-4 text-sm text-gray-600">{new Date(p.createdAt).toLocaleDateString()}</td>
                                                 <td className="p-4 font-semibold">{p.name}</td>
-                                                <td className="p-4 text-gray-300 font-mono">{p.mobile}</td>
-                                                <td className="p-4 text-gray-300">{p.ward}</td>
-                                                <td className="p-4 text-gray-300">{p.quantity}</td>
+                                                <td className="p-4 text-gray-600 font-mono">{p.mobile}</td>
+                                                <td className="p-4 text-gray-600">{p.ward}</td>
+                                                <td className="p-4 text-gray-600">{p.quantity}</td>
                                                 <td className="p-4 text-blue-400 font-bold">₹{p.amount}</td>
                                                 <td className="p-4">
                                                     <span className={`px-2 py-1 rounded-full text-xs font-semibold ${p.status === 'success'
