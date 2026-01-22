@@ -32,7 +32,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ onClose }) => {
 
             // 2. Open Razorpay
             const options = {
-                key: "rzp_live_S3dZPdxMW1tYgS",
+                key: "rzp_test_S6qkory9by8XVd",
                 amount: order.amount,
                 currency: "INR",
                 name: "MYL-msf thiruvegappura panchayath EETHAPPAZHA BIG SALE",
