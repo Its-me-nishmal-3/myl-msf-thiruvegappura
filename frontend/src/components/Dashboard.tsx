@@ -107,20 +107,20 @@ const Dashboard: React.FC = () => {
     }, []);
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-teal-50 text-gray-900 font-sans selection:bg-teal-200 pb-24 relative overflow-hidden">
+        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-sky-50 text-gray-900 font-sans selection:bg-sky-200 pb-24 relative overflow-hidden">
 
             {/* Enhanced Background Effects */}
             <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
-                <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-teal-200/40 rounded-full blur-[150px] animate-pulse" />
+                <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-sky-200/40 rounded-full blur-[150px] animate-pulse" />
                 <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-blue-200/40 rounded-full blur-[150px] animate-pulse" style={{ animationDelay: '1s' }} />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30%] h-[30%] bg-teal-100/50 rounded-full blur-[100px]" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30%] h-[30%] bg-sky-100/50 rounded-full blur-[100px]" />
             </div>
 
             <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 space-y-8 pt-8">
                 {/* Header */}
-                <header className="flex justify-between items-center backdrop-blur-xl bg-white/80 p-4 md:p-5 rounded-2xl border border-teal-100 sticky top-4 z-50 shadow-xl">
+                <header className="flex justify-between items-center backdrop-blur-xl bg-white/80 p-4 md:p-5 rounded-2xl border border-sky-100 sticky top-4 z-50 shadow-xl">
                     <div>
-                        <h1 className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-teal-600 to-blue-500 drop-shadow-lg">
+                        <h1 className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-sky-600 to-blue-500 drop-shadow-lg">
                             MYL-msf thiruvegappura panchayath
                         </h1>
                         <p className="text-gray-600 text-xs md:text-sm font-medium">EETHAPPAZHA BIG SALE 2026</p>
@@ -131,14 +131,14 @@ const Dashboard: React.FC = () => {
                             className="flex flex-col items-center group"
                             title="Install App"
                         >
-                            <span className="text-xs text-teal-600 font-semibold mb-0.5 group-hover:text-teal-700 transition-colors">Use as App</span>
-                            <div className="bg-teal-50 p-1.5 rounded-lg hover:bg-teal-100 transition-all border border-teal-200 group-hover:scale-110 group-hover:border-teal-400">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-teal-600 group-hover:text-teal-700"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" x2="12" y1="15" y2="3" /></svg>
+                            <span className="text-xs text-sky-600 font-semibold mb-0.5 group-hover:text-sky-700 transition-colors">Use as App</span>
+                            <div className="bg-sky-50 p-1.5 rounded-lg hover:bg-sky-100 transition-all border border-sky-200 group-hover:scale-110 group-hover:border-sky-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-sky-600 group-hover:text-sky-700"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" x2="12" y1="15" y2="3" /></svg>
                             </div>
                         </button>
                         <button
                             onClick={() => navigate('/history')}
-                            className="px-4 py-2 bg-teal-50 hover:bg-gradient-to-r hover:from-teal-100 hover:to-blue-100 rounded-lg text-sm transition-all border border-teal-200 hover:border-teal-400 h-10 text-gray-700 font-medium"
+                            className="px-4 py-2 bg-sky-50 hover:bg-gradient-to-r hover:from-sky-100 hover:to-blue-100 rounded-lg text-sm transition-all border border-sky-200 hover:border-sky-400 h-10 text-gray-700 font-medium"
                         >
                             History
                         </button>
@@ -151,21 +151,21 @@ const Dashboard: React.FC = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
-                        className="bg-gradient-to-br from-teal-50 via-teal-100/50 to-white border border-teal-200 p-6 md:p-8 rounded-2xl relative overflow-hidden group hover:shadow-2xl hover:shadow-teal-300/30 transition-all duration-300"
+                        className="bg-gradient-to-br from-sky-50 via-sky-100/50 to-white border border-sky-200 p-6 md:p-8 rounded-2xl relative overflow-hidden group hover:shadow-2xl hover:shadow-sky-300/30 transition-all duration-300"
                     >
                         <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
-                            <IndianRupee className="w-20 h-20 text-teal-900" />
+                            <IndianRupee className="w-20 h-20 text-sky-900" />
                         </div>
                         <div className="relative z-10">
-                            <h3 className="text-teal-700 text-xs md:text-sm uppercase tracking-widest font-bold mb-2 flex items-center gap-2">
-                                <span className="w-2 h-2 bg-teal-600 rounded-full animate-pulse"></span>
+                            <h3 className="text-sky-700 text-xs md:text-sm uppercase tracking-widest font-bold mb-2 flex items-center gap-2">
+                                <span className="w-2 h-2 bg-sky-600 rounded-full animate-pulse"></span>
                                 Total Collected
                             </h3>
                             <p className="text-5xl md:text-6xl font-extrabold text-gray-900 drop-shadow-lg">
                                 ₹{stats.totalAmount.toLocaleString()}
                             </p>
                         </div>
-                        <div className="absolute bottom-0 left-0 w-full h-1.5 bg-gradient-to-r from-teal-500 via-teal-600 to-teal-500 animate-pulse" />
+                        <div className="absolute bottom-0 left-0 w-full h-1.5 bg-gradient-to-r from-sky-500 via-sky-600 to-sky-500 animate-pulse" />
                     </motion.div>
 
                     <motion.div
@@ -197,7 +197,7 @@ const Dashboard: React.FC = () => {
                         animate={{ opacity: 1, y: 0 }}
                         className="w-full max-w-4xl mx-auto mb-12"
                     >
-                        <div className="bg-gradient-to-br from-teal-50 via-white to-blue-50 backdrop-blur-md rounded-2xl p-6 border border-teal-100 shadow-xl">
+                        <div className="bg-gradient-to-br from-sky-50 via-white to-blue-50 backdrop-blur-md rounded-2xl p-6 border border-sky-100 shadow-xl">
                             <div className="flex items-center gap-3 mb-6">
                                 <div className="p-2 bg-yellow-100 rounded-lg border border-yellow-200">
                                     <Trophy className="text-yellow-600 w-6 h-6" />
@@ -207,13 +207,13 @@ const Dashboard: React.FC = () => {
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                                 {todaysToppers.map((topper, index) => (
-                                    <div key={topper._id} className="relative bg-white rounded-xl p-4 border border-teal-50 hover:border-teal-200 hover:shadow-lg transition-all flex items-center justify-between group">
+                                    <div key={topper._id} className="relative bg-white rounded-xl p-4 border border-sky-50 hover:border-sky-200 hover:shadow-lg transition-all flex items-center justify-between group">
                                         <div className="flex items-center gap-4">
                                             <div className={`
                                                 w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm shadow-sm
                                                 ${index === 0 ? 'bg-yellow-100 text-yellow-700 border border-yellow-200' :
                                                     index === 1 ? 'bg-gray-100 text-gray-700 border border-gray-200' :
-                                                        index === 2 ? 'bg-orange-100 text-orange-700 border border-orange-200' : 'bg-teal-50 text-teal-600 border border-teal-100'}
+                                                        index === 2 ? 'bg-orange-100 text-orange-700 border border-orange-200' : 'bg-sky-50 text-sky-600 border border-sky-100'}
                                             `}>
                                                 {index + 1}
                                             </div>
@@ -221,7 +221,7 @@ const Dashboard: React.FC = () => {
                                                 <h3 className="font-semibold text-gray-800 text-sm">{topper.name}</h3>
                                                 <p className="text-xs text-gray-500">{topper.ward}</p>
                                                 <div className="flex gap-2 mt-1">
-                                                    <span className="text-xs font-bold text-teal-600">{topper.totalQuantity} Packs</span>
+                                                    <span className="text-xs font-bold text-sky-600">{topper.totalQuantity} Packs</span>
                                                     <span className="text-xs font-bold text-gray-400">|</span>
                                                     <span className="text-xs font-bold text-blue-600">₹{topper.totalAmount}</span>
                                                 </div>
@@ -246,20 +246,20 @@ const Dashboard: React.FC = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
-                            className="bg-white/90 backdrop-blur-xl border border-teal-100 rounded-3xl p-6 md:p-8 overflow-hidden relative shadow-xl h-full"
+                            className="bg-white/90 backdrop-blur-xl border border-sky-100 rounded-3xl p-6 md:p-8 overflow-hidden relative shadow-xl h-full"
                         >
-                            <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-teal-200/30 via-blue-200/20 to-transparent blur-3xl" />
-                            <div className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-to-tr from-blue-200/30 via-teal-200/20 to-transparent blur-3xl" />
+                            <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-sky-200/30 via-blue-200/20 to-transparent blur-3xl" />
+                            <div className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-to-tr from-blue-200/30 via-sky-200/20 to-transparent blur-3xl" />
 
                             <div className="relative z-10">
                                 <div className="flex items-center justify-between mb-6">
                                     <h2 className="text-2xl md:text-3xl font-bold text-gray-800 font-malayalam leading-tight flex items-center gap-3">
-                                        <span className="w-1.5 h-10 bg-gradient-to-b from-teal-600 to-blue-600 rounded-full"></span>
+                                        <span className="w-1.5 h-10 bg-gradient-to-b from-sky-600 to-blue-600 rounded-full"></span>
                                         പ്രിയമുള്ളവരെ…
                                     </h2>
                                     <button
                                         onClick={toggleWelcome}
-                                        className="p-2 rounded-lg bg-teal-50/50 hover:bg-teal-100/50 border border-teal-200 hover:border-teal-400 transition-all group"
+                                        className="p-2 rounded-lg bg-sky-50/50 hover:bg-sky-100/50 border border-sky-200 hover:border-sky-400 transition-all group"
                                         title={isWelcomeExpanded ? "Hide Message" : "Show Message"}
                                     >
                                         <svg
@@ -272,7 +272,7 @@ const Dashboard: React.FC = () => {
                                             strokeWidth="2"
                                             strokeLinecap="round"
                                             strokeLinejoin="round"
-                                            className={`text-teal-600 transition-transform duration-300 ${isWelcomeExpanded ? 'rotate-180' : ''}`}
+                                            className={`text-sky-600 transition-transform duration-300 ${isWelcomeExpanded ? 'rotate-180' : ''}`}
                                         >
                                             <polyline points="6 9 12 15 18 9"></polyline>
                                         </svg>
@@ -294,7 +294,7 @@ const Dashboard: React.FC = () => {
                                                 <p className="hover:text-gray-600 transition-colors">
                                                     പൊതുജനങ്ങളുടെ അവകാശങ്ങൾ സംരക്ഷിക്കുന്നതിനും പുരോഗതിക്കും മാതൃകപരമായ ഇടപെടലുകളും സമരങ്ങളും നടത്തി മുസ്‌ലിം യൂത്ത് ലീഗ് തിരുവേഗപ്പുറ പഞ്ചായത്ത്‌ കമ്മിറ്റി അതിന്റെ പ്രയാണം നടത്തികൊണ്ടിരിക്കുകയാണ്.
                                                 </p>
-                                                <p className="font-semibold text-teal-700 hover:text-teal-800 transition-colors bg-teal-50 border-l-4 border-teal-600 pl-4 py-2 rounded-r-lg">
+                                                <p className="font-semibold text-sky-700 hover:text-sky-800 transition-colors bg-sky-50 border-l-4 border-sky-600 pl-4 py-2 rounded-r-lg">
                                                     തുടർന്നും ഇത്തരം പ്രവർത്തനങ്ങൾക്കും പ്രയത്നങ്ങൾക്കും ശക്തി പകരാൻ  മുസ്‌ലിം യൂത്ത് ലീഗിന്റെ ഈത്തപ്പഴം ബിഗ് സെയിലിൽ പങ്കാളികളാവണമെന്ന് വിനീതമായി അഭ്യർത്ഥിക്കുന്നു
                                                 </p>
 
@@ -312,7 +312,7 @@ const Dashboard: React.FC = () => {
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.5, delay: 0.3 }}
-                            className="relative w-full rounded-3xl overflow-hidden shadow-xl border-4 border-teal-100 group h-full min-h-[400px]"
+                            className="relative w-full rounded-3xl overflow-hidden shadow-xl border-4 border-sky-100 group h-full min-h-[400px]"
                         >
                             <img
                                 src={mainImage}
@@ -320,7 +320,7 @@ const Dashboard: React.FC = () => {
                                 className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
-                            <div className="absolute inset-0 bg-gradient-to-br from-teal-500/10 via-transparent to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <div className="absolute inset-0 bg-gradient-to-br from-sky-500/10 via-transparent to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                         </motion.div>
                     </div>
 
@@ -328,7 +328,7 @@ const Dashboard: React.FC = () => {
 
                 {/* Banner Gallery */}
                 <div className="space-y-4">
-                    <h3 className="text-xl font-bold text-gray-800 pl-2 border-l-4 border-teal-600">Gallery</h3>
+                    <h3 className="text-xl font-bold text-gray-800 pl-2 border-l-4 border-sky-600">Gallery</h3>
                     <div className="flex overflow-x-auto gap-4 pb-4 snap-x snap-mandatory scrollbar-hide">
                         {BANNERS.map((banner, idx) => (
                             <motion.div
@@ -336,7 +336,7 @@ const Dashboard: React.FC = () => {
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
-                                className="min-w-[280px] md:min-w-[350px] h-48 md:h-64 rounded-2xl overflow-hidden snap-center shadow-lg border border-teal-100 relative group"
+                                className="min-w-[280px] md:min-w-[350px] h-48 md:h-64 rounded-2xl overflow-hidden snap-center shadow-lg border border-sky-100 relative group"
                             >
                                 <img
                                     src={banner}
@@ -350,9 +350,9 @@ const Dashboard: React.FC = () => {
                 </div>
 
                 {/* Live Unit Stats - Professional Design */}
-                <div className="bg-white/80 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-teal-100 shadow-xl">
+                <div className="bg-white/80 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-sky-100 shadow-xl">
                     <div className="flex items-center gap-3 mb-6">
-                        <div className="w-1 h-8 bg-gradient-to-b from-teal-600 to-blue-600 rounded-full" />
+                        <div className="w-1 h-8 bg-gradient-to-b from-sky-600 to-blue-600 rounded-full" />
                         <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
                             Unit Wise Collection
                         </h2>
@@ -375,7 +375,7 @@ const Dashboard: React.FC = () => {
                                     if (isFirst) return 'border-l-4 border-yellow-400';
                                     if (isSecond) return 'border-l-4 border-blue-400';
                                     if (isThird) return 'border-l-4 border-pink-400';
-                                    if (isActive) return 'border-l-4 border-teal-400';
+                                    if (isActive) return 'border-l-4 border-sky-400';
                                     return 'border-l-4 border-gray-200';
                                 };
 
@@ -383,7 +383,7 @@ const Dashboard: React.FC = () => {
                                     if (isFirst) return 'bg-yellow-50';
                                     if (isSecond) return 'bg-blue-50';
                                     if (isThird) return 'bg-pink-50';
-                                    if (isActive) return 'bg-teal-50';
+                                    if (isActive) return 'bg-sky-50';
                                     return 'bg-white';
                                 };
 
@@ -398,7 +398,7 @@ const Dashboard: React.FC = () => {
                                     if (isFirst) return 'text-yellow-600';
                                     if (isSecond) return 'text-blue-600';
                                     if (isThird) return 'text-pink-600';
-                                    if (isActive) return 'text-teal-600';
+                                    if (isActive) return 'text-sky-600';
                                     return 'text-gray-400';
                                 };
 
@@ -445,7 +445,7 @@ const Dashboard: React.FC = () => {
                         whileHover={{ scale: 1.05, y: -5 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => setShowModal(true)}
-                        className="pointer-events-auto bg-gradient-to-r from-teal-600 to-blue-600 text-white font-bold text-lg md:text-xl py-4 px-12 rounded-full shadow-2xl shadow-teal-500/40 hover:shadow-teal-500/60 border border-teal-400/30 backdrop-blur-sm flex items-center gap-2"
+                        className="pointer-events-auto bg-gradient-to-r from-sky-600 to-blue-600 text-white font-bold text-lg md:text-xl py-4 px-12 rounded-full shadow-2xl shadow-sky-500/40 hover:shadow-sky-500/60 border border-sky-400/30 backdrop-blur-sm flex items-center gap-2"
                     >
                         Participate
                     </motion.button>

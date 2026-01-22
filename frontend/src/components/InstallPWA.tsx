@@ -53,7 +53,7 @@ const InstallPWA: React.FC = () => {
     return (
         <div className="min-h-screen bg-gray-950 text-white p-6 flex flex-col items-center justify-center relative overflow-hidden">
             {/* Background Effects */}
-            <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
             <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
 
             <div className="max-w-md w-full relative z-10">
@@ -73,7 +73,7 @@ const InstallPWA: React.FC = () => {
                         <img src="/pwa-192x192.png" alt="App Icon" className="w-full h-full object-cover" />
                     </div>
 
-                    <h1 className="text-2xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400">
+                    <h1 className="text-2xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400">
                         Install App
                     </h1>
                     <p className="text-gray-400 mb-8">
@@ -81,7 +81,7 @@ const InstallPWA: React.FC = () => {
                     </p>
 
                     {isInstalled ? (
-                        <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4 text-emerald-400">
+                        <div className="bg-sky-500/10 border border-sky-500/20 rounded-xl p-4 text-sky-400">
                             <p className="font-semibold">App is already installed!</p>
                             <p className="text-sm mt-1 opacity-80">You can open it from your home screen.</p>
                         </div>
@@ -93,7 +93,7 @@ const InstallPWA: React.FC = () => {
                                     {deferredPrompt ? (
                                         <button
                                             onClick={handleInstallClick}
-                                            className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-6 rounded-xl flex items-center justify-center gap-2 transition-colors shadow-lg shadow-emerald-500/20"
+                                            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl flex items-center justify-center gap-2 transition-colors shadow-lg shadow-blue-500/20"
                                         >
                                             <Download className="w-5 h-5" />
                                             Install App

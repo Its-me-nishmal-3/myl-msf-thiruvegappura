@@ -373,7 +373,7 @@ const PosterGenerator: React.FC = () => {
                                 onChange={(e) => {
                                     setZoom(Number(e.target.value));
                                 }}
-                                className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-emerald-500"
+                                className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-blue-500"
                             />
                         </div>
                         <div className="flex gap-3">
@@ -385,7 +385,7 @@ const PosterGenerator: React.FC = () => {
                             </button>
                             <button
                                 onClick={showCroppedImage}
-                                className="flex-1 py-3 px-4 rounded-xl bg-emerald-600 text-white font-bold hover:bg-emerald-500 transition-colors flex items-center justify-center gap-2"
+                                className="flex-1 py-3 px-4 rounded-xl bg-blue-600 text-white font-bold hover:bg-blue-500 transition-colors flex items-center justify-center gap-2"
                             >
                                 <Check className="w-5 h-5" /> Confirm Crop
                             </button>
@@ -402,14 +402,14 @@ const PosterGenerator: React.FC = () => {
                 <ArrowLeft className="w-5 h-5" /> Back
             </button>
 
-            <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400 mb-6 text-center">
+            <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400 mb-6 text-center">
                 Poster Generator
             </h1>
 
             {/* Inputs */}
             <div className="w-full max-w-md bg-gray-900 rounded-2xl p-4 space-y-4 mb-8 border border-gray-800">
                 <div className="flex flex-col sm:flex-row gap-3">
-                    <div className="relative w-full sm:flex-1 bg-gray-800 rounded-xl overflow-hidden hover:ring-2 ring-emerald-500/50 transition-all cursor-pointer h-14 flex items-center justify-center border border-gray-700">
+                    <div className="relative w-full sm:flex-1 bg-gray-800 rounded-xl overflow-hidden hover:ring-2 ring-blue-500/50 transition-all cursor-pointer h-14 flex items-center justify-center border border-gray-700">
                         <input
                             type="file"
                             className="absolute inset-0 opacity-0 cursor-pointer z-10"
@@ -417,7 +417,7 @@ const PosterGenerator: React.FC = () => {
                             accept="image/*"
                         />
                         <div className="flex items-center gap-2 pointer-events-none">
-                            <Upload className="w-5 h-5 text-emerald-500" />
+                            <Upload className="w-5 h-5 text-blue-500" />
                             <span className="text-xs font-bold text-gray-300">
                                 {userImage ? 'Change Photo' : 'Upload Photo'}
                             </span>
@@ -428,7 +428,7 @@ const PosterGenerator: React.FC = () => {
                         type="text"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        className="w-full sm:flex-[2] bg-gray-800 border border-gray-700 rounded-xl px-4 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 h-14"
+                        className="w-full sm:flex-[2] bg-gray-800 border border-gray-700 rounded-xl px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 h-14"
                         placeholder="Enter your name"
                     />
                 </div>
@@ -464,7 +464,7 @@ const PosterGenerator: React.FC = () => {
                 <button
                     onClick={handleShare}
                     disabled={!isCanvasReady || !userImage}
-                    className="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 rounded-xl shadow-lg flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all active:scale-95"
+                    className="flex-1 bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 rounded-xl shadow-lg flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all active:scale-95"
                 >
                     {isGenerating ? <Loader2 className="animate-spin" /> : <Share2 />}
                     {isGenerating ? 'Wait...' : 'Share'}

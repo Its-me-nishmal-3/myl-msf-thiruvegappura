@@ -110,13 +110,13 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ onClose }) => {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                className="bg-white border border-teal-100 w-full max-w-md rounded-2xl p-6 shadow-2xl relative"
+                className="bg-white border border-sky-100 w-full max-w-md rounded-2xl p-6 shadow-2xl relative"
             >
                 <button onClick={onClose} className="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
                     <X size={24} />
                 </button>
 
-                <h2 className="text-2xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-teal-600 to-blue-600">
+                <h2 className="text-2xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-sky-600 to-blue-600">
                     Make Payment
                 </h2>
 
@@ -127,7 +127,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ onClose }) => {
                             type="text"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
-                            className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-200 transition-all"
+                            className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-200 transition-all"
                             placeholder="Enter your name"
                         />
                     </div>
@@ -141,7 +141,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ onClose }) => {
                                 const val = e.target.value.replace(/\D/g, '').slice(0, 10);
                                 setMobile(val);
                             }}
-                            className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-200 transition-all"
+                            className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-200 transition-all"
                             placeholder="Enter 10-digit mobile number"
                         />
                     </div>
@@ -151,7 +151,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ onClose }) => {
                         <select
                             value={ward}
                             onChange={(e) => setWard(e.target.value)}
-                            className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-200 transition-all"
+                            className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-200 transition-all"
                         >
                             <option value="SELECT YOUR UNIT" disabled>
                                 SELECT YOUR UNIT
@@ -173,17 +173,17 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ onClose }) => {
                     {/* Quantity Selector */}
                     <div>
                         <label className="block text-gray-700 mb-2 text-sm font-medium">Number of Packs</label>
-                        <div className="flex items-center gap-4 bg-teal-50 p-2 rounded-xl border border-teal-200 w-fit">
+                        <div className="flex items-center gap-4 bg-sky-50 p-2 rounded-xl border border-sky-200 w-fit">
                             <button
                                 onClick={decrementQty}
-                                className="p-2 hover:bg-teal-100 rounded-lg transition-colors text-gray-700"
+                                className="p-2 hover:bg-sky-100 rounded-lg transition-colors text-gray-700"
                             >
                                 <Minus size={20} />
                             </button>
                             <span className="text-xl font-bold w-8 text-center text-gray-900">{quantity}</span>
                             <button
                                 onClick={incrementQty}
-                                className="p-2 hover:bg-teal-100 rounded-lg transition-colors text-gray-700"
+                                className="p-2 hover:bg-sky-100 rounded-lg transition-colors text-gray-700"
                             >
                                 <Plus size={20} />
                             </button>
@@ -199,7 +199,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ onClose }) => {
                         <button
                             onClick={handlePayment}
                             disabled={loading}
-                            className="w-full bg-gradient-to-r from-teal-600 to-blue-600 hover:from-teal-700 hover:to-blue-700 text-white font-bold py-4 rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
+                            className="w-full bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-700 hover:to-blue-700 text-white font-bold py-4 rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
                         >
                             {loading ? 'Processing...' : `Pay ₹${350 * quantity}`}
                         </button>

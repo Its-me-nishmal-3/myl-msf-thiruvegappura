@@ -83,11 +83,11 @@ const History: React.FC = () => {
     }, [hasMore, isFetchingMore]);
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-teal-50 text-gray-900 p-6 max-w-3xl mx-auto pb-24">
-            <header className="flex items-center gap-4 mb-6 bg-white/80 backdrop-blur-xl p-4 rounded-2xl border border-teal-100 shadow-lg">
+        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-sky-50 text-gray-900 p-6 max-w-3xl mx-auto pb-24">
+            <header className="flex items-center gap-4 mb-6 bg-white/80 backdrop-blur-xl p-4 rounded-2xl border border-sky-100 shadow-lg">
                 <button
                     onClick={() => navigate('/')}
-                    className="p-2 rounded-full hover:bg-teal-50 transition-colors text-gray-700"
+                    className="p-2 rounded-full hover:bg-sky-50 transition-colors text-gray-700"
                 >
                     <ChevronLeft />
                 </button>
@@ -96,11 +96,11 @@ const History: React.FC = () => {
                     {unitFilter && (
                         <div className="flex items-center gap-2 mt-2">
                             <span className="text-sm text-gray-600">Showing payments for:</span>
-                            <div className="flex items-center gap-2 bg-teal-100 border border-teal-300 px-3 py-1 rounded-full">
-                                <span className="text-sm font-semibold text-teal-700">{unitFilter}</span>
+                            <div className="flex items-center gap-2 bg-sky-100 border border-sky-300 px-3 py-1 rounded-full">
+                                <span className="text-sm font-semibold text-sky-700">{unitFilter}</span>
                                 <button
                                     onClick={() => setSearchParams({})}
-                                    className="hover:bg-teal-200 rounded-full p-0.5 transition-colors text-teal-700"
+                                    className="hover:bg-sky-200 rounded-full p-0.5 transition-colors text-sky-700"
                                     title="Clear filter"
                                 >
                                     <X size={14} />
@@ -112,11 +112,11 @@ const History: React.FC = () => {
             </header>
 
             {loading ? (
-                <div className="text-center text-gray-500 mt-20 bg-white/80 backdrop-blur-xl p-8 rounded-2xl border border-teal-100">Loading...</div>
+                <div className="text-center text-gray-500 mt-20 bg-white/80 backdrop-blur-xl p-8 rounded-2xl border border-sky-100">Loading...</div>
             ) : (
                 <div className="space-y-4">
                     {history.length === 0 ? (
-                        <div className="text-center text-gray-500 mt-20 bg-white/80 backdrop-blur-xl p-8 rounded-2xl border border-teal-100">No payments found</div>
+                        <div className="text-center text-gray-500 mt-20 bg-white/80 backdrop-blur-xl p-8 rounded-2xl border border-sky-100">No payments found</div>
                     ) : (
                         <>
                             {history.map((item, i) => (
@@ -125,7 +125,7 @@ const History: React.FC = () => {
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.05 }}
-                                    className="bg-white/90 backdrop-blur-xl border border-teal-100 p-4 rounded-2xl flex justify-between items-center shadow-lg hover:shadow-xl transition-all"
+                                    className="bg-white/90 backdrop-blur-xl border border-sky-100 p-4 rounded-2xl flex justify-between items-center shadow-lg hover:shadow-xl transition-all"
                                 >
                                     <div>
                                         <h3 className="font-bold text-gray-800">{item.name}</h3>
@@ -133,7 +133,7 @@ const History: React.FC = () => {
                                         <p className="text-xs text-gray-500 font-mono mt-1">{item.paymentId}</p>
                                     </div>
                                     <div className="text-right">
-                                        <p className="text-teal-600 font-bold text-lg">₹{item.amount}</p>
+                                        <p className="text-sky-600 font-bold text-lg">₹{item.amount}</p>
                                         <button
                                             onClick={() => navigate('/receipt', { state: { payment: item } })}
                                             className="text-xs text-blue-600 hover:text-blue-700 mt-1 flex items-center justify-end gap-1 font-medium"

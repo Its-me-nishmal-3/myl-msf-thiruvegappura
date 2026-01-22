@@ -122,7 +122,7 @@ const AdminDashboard: React.FC = () => {
         <div className="p-6 max-w-7xl mx-auto min-h-screen pb-24 space-y-8">
             <header className="flex flex-col md:flex-row justify-between items-center gap-4">
                 <div>
-                    <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-emerald-400">
+                    <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-sky-400">
                         Admin Dashboard
                     </h1>
                     <p className="text-gray-400 text-sm">Overview & Management</p>
@@ -156,8 +156,8 @@ const AdminDashboard: React.FC = () => {
                     {/* Stats Cards */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                         <div className="glass-panel p-6 flex flex-col items-center text-center">
-                            <div className="p-3 bg-emerald-500/20 rounded-full mb-2">
-                                <DollarSign className="text-emerald-400" size={24} />
+                            <div className="p-3 bg-blue-500/20 rounded-full mb-2">
+                                <DollarSign className="text-blue-400" size={24} />
                             </div>
                             <h3 className="text-gray-400 text-xs uppercase tracking-wider">Total Revenue</h3>
                             <p className="text-2xl font-bold text-white mt-1">₹{analytics.overall.totalAmount.toLocaleString()}</p>
@@ -204,7 +204,7 @@ const AdminDashboard: React.FC = () => {
                                             itemStyle={{ color: '#fff' }}
                                             formatter={(value?: number) => [`₹${(value || 0).toLocaleString()}`, 'Revenue']}
                                         />
-                                        <Bar dataKey="amount" fill="#10b981" radius={[0, 4, 4, 0]} barSize={20} />
+                                        <Bar dataKey="amount" fill="#3b82f6" radius={[0, 4, 4, 0]} barSize={20} />
                                     </BarChart>
                                 </ResponsiveContainer>
                             </div>
@@ -293,10 +293,10 @@ const AdminDashboard: React.FC = () => {
                                                 <td className="p-4 text-gray-300 font-mono">{p.mobile}</td>
                                                 <td className="p-4 text-gray-300">{p.ward}</td>
                                                 <td className="p-4 text-gray-300">{p.quantity}</td>
-                                                <td className="p-4 text-emerald-400 font-bold">₹{p.amount}</td>
+                                                <td className="p-4 text-blue-400 font-bold">₹{p.amount}</td>
                                                 <td className="p-4">
                                                     <span className={`px-2 py-1 rounded-full text-xs font-semibold ${p.status === 'success'
-                                                        ? 'bg-emerald-500/10 text-emerald-400'
+                                                        ? 'bg-blue-500/10 text-blue-400'
                                                         : p.status === 'failed'
                                                             ? 'bg-red-500/10 text-red-400'
                                                             : 'bg-amber-500/10 text-amber-400'
