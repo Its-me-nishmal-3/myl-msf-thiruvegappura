@@ -11,7 +11,7 @@ const AdminLogin: React.FC = () => {
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const res = await fetch('https://myl-muthuthala.onrender.com/api/admin/login', {
+            const res = await fetch('https://myl-msf-thiruvegappura.onrender.com/api/admin/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username, password })

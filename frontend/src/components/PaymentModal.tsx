@@ -23,7 +23,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ onClose }) => {
 
         try {
             // 1. Create Order (Sends user details to save as "Created")
-            const res = await fetch('https://myl-muthuthala.onrender.com/api/payment/create-order', {
+            const res = await fetch('https://myl-msf-thiruvegappura.onrender.com/api/payment/create-order', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ quantity, name, mobile, ward })
@@ -41,7 +41,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ onClose }) => {
                 handler: async function (response: any) {
                     // 3. Verify Payment
                     try {
-                        const verifyRes = await fetch('https://myl-muthuthala.onrender.com/api/payment/verify', {
+                        const verifyRes = await fetch('https://myl-msf-thiruvegappura.onrender.com/api/payment/verify', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({
@@ -80,7 +80,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ onClose }) => {
             const rzp1 = new (window as any).Razorpay(options);
             rzp1.on('payment.failed', function (response: any) {
                 // Report failure to backend
-                fetch('https://myl-muthuthala.onrender.com/api/payment/payment-failed', {
+                fetch('https://myl-msf-thiruvegappura.onrender.com/api/payment/payment-failed', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({

@@ -15,7 +15,7 @@ import banner4 from '../assets/WhatsApp Image 2026-01-22 at 9.56.57 AM.jpeg';
 import banner5 from '../assets/WhatsApp Image 2026-01-22 at 9.56.58 AM.jpeg';
 import banner6 from '../assets/WhatsApp Image 2026-01-22 at 9.56.57 AM.jpeg';
 
-const SOCKET_URL = 'https://myl-muthuthala.onrender.com';
+const SOCKET_URL = 'https://myl-msf-thiruvegappura.onrender.com';
 
 const UNIT_NAMES = [
     'തിരുവേഗപ്പുറ', 'മൂച്ചിത്തറ', 'വെസ്റ്റ് കൈപ്പുറം', 'ഫാറൂഖ് നഗർ', 'കൈപ്പുറം',
@@ -60,7 +60,7 @@ const Dashboard: React.FC = () => {
 
     const fetchToppers = async () => {
         try {
-            const res = await fetch('https://myl-muthuthala.onrender.com/api/payment/todays-toppers');
+            const res = await fetch('https://myl-msf-thiruvegappura.onrender.com/api/payment/todays-toppers');
             if (!res.ok) throw new Error('Failed to fetch');
 
             const data = await res.json();

@@ -8,7 +8,7 @@ import {
 } from 'recharts';
 import { io } from 'socket.io-client';
 
-const SOCKET_URL = 'https://myl-muthuthala.onrender.com';
+const SOCKET_URL = 'https://myl-msf-thiruvegappura.onrender.com';
 
 interface Payment {
     _id: string;
@@ -50,7 +50,7 @@ const AdminDashboard: React.FC = () => {
             if (search) params.append('search', search);
             if (wardFilter !== 'All') params.append('ward', wardFilter);
 
-            const res = await fetch(`https://myl-muthuthala.onrender.com/api/admin/payments?${params.toString()}`, {
+            const res = await fetch(`https://myl-msf-thiruvegappura.onrender.com/api/admin/payments?${params.toString()}`, {
                 headers: { 'Authorization': token }
             });
 
@@ -70,7 +70,7 @@ const AdminDashboard: React.FC = () => {
         const token = localStorage.getItem('adminToken');
         if (!token) return navigate('/login');
         try {
-            const res = await fetch(`https://myl-muthuthala.onrender.com/api/admin/analytics`, {
+            const res = await fetch(`https://myl-msf-thiruvegappura.onrender.com/api/admin/analytics`, {
                 headers: { 'Authorization': token }
             });
             const data = await res.json();

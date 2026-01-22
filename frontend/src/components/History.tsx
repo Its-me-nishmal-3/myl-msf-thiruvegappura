@@ -30,8 +30,8 @@ const History: React.FC = () => {
 
             // Fetch from backend with optional unit filter
             const url = unitFilter
-                ? `https://myl-muthuthala.onrender.com/api/payment/history?page=${pageNum}&limit=10&ward=${encodeURIComponent(unitFilter)}`
-                : `https://myl-muthuthala.onrender.com/api/payment/history?page=${pageNum}&limit=10`;
+                ? `https://myl-msf-thiruvegappura.onrender.com/api/payment/history?page=${pageNum}&limit=10&ward=${encodeURIComponent(unitFilter)}`
+                : `https://myl-msf-thiruvegappura.onrender.com/api/payment/history?page=${pageNum}&limit=10`;
 
             const res = await fetch(url);
             const data = await res.json();
