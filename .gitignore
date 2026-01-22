@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+
+# Production build
+dist/
+build/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+*.log
+
+# Editor directories and files
+.vscode/
+.idea/
+.DS_Store
+*.suo
+*.ntvs
+*.njsproj
+*.sln
+*.sw?
+Thumbs.db
+
+# Testing
+coverage/
+
+# Optional: Ignore package-lock.json if you prefer yarn.lock or pnpm-lock.yaml only
+# package-lock.json
