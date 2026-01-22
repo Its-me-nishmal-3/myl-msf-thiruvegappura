@@ -4,7 +4,7 @@ import PaymentModal from './PaymentModal';
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { IndianRupee, Trophy, Crown, TrendingUp } from 'lucide-react';
+import { IndianRupee, Trophy, Crown } from 'lucide-react';
 
 // Assets
 import mainImage from '../assets/main__ .jpeg';
@@ -33,8 +33,7 @@ interface Stats {
 
 const Dashboard: React.FC = () => {
     const navigate = useNavigate();
-    const [loading, setLoading] = useState(false);
-    const [showPaymentModal, setShowPaymentModal] = useState(false);
+
     const [stats, setStats] = useState<Stats>({ totalAmount: 0, totalCount: 0, wardWise: {} });
     const [todaysToppers, setTodaysToppers] = useState<{ _id: string; name: string; ward: string; totalQuantity: number; totalAmount: number }[]>([]);
     const [showModal, setShowModal] = useState(false);
