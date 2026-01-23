@@ -464,7 +464,7 @@ router.get('/history', statsLimiter, async (req, res) => {
         const skip = (page - 1) * limit;
 
         // Build query filter
-        const filter: any = { status: 'success' };
+        const filter: any = {};
         if (ward) {
             filter.ward = ward;
         }
