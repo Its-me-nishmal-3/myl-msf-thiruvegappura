@@ -5,7 +5,7 @@ import { Download, Loader2, Share2 } from 'lucide-react';
 const NameWithPoster: React.FC = () => {
     const [searchParams] = useSearchParams();
     const [name, setName] = useState('');
-    const [quantity, setQuantity] = useState(1);
+    const [_quantity, setQuantity] = useState(1);
     const [amount, setAmount] = useState(0);
     const [generated, setGenerated] = useState(false);
     const [isProcessing, setIsProcessing] = useState(false);
@@ -29,15 +29,15 @@ const NameWithPoster: React.FC = () => {
         }
     }, [nameParam, quantityParam, amountParam, typeParam]);
 
-    const generateImageOnly = async (userName: string, qty: number, amt: number) => {
+    const generateImageOnly = async (userName: string, _qty: number, amt: number) => {
         try {
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
             const img = new Image();
 
-            // Original dimensions (same as Receipt.tsx)
-            canvas.width = 1200;
-            canvas.height = 1550;
+            // Original dimensions (new image size)
+            canvas.width = 1937;
+            canvas.height = 2560;
             img.src = '/recipt.jpeg';
 
             await new Promise((resolve, reject) => {
@@ -46,27 +46,27 @@ const NameWithPoster: React.FC = () => {
             });
 
             if (ctx) {
-                ctx.drawImage(img, 0, 0, 1200, 1550);
-                ctx.fillStyle = '#751d08';
+                ctx.drawImage(img, 0, 0, 1937, 2560);
+                // ctx.fillStyle = '#751d08';
                 ctx.textBaseline = 'middle';
 
-                // Area 1: Name
-                const nameX = 201;
-                const nameY = 528 + ((583 - 528) / 2);
-                ctx.font = 'bold 30px Arial, sans-serif';
+                // Area 1: Amount - coords (306,333,812,427)
+                const amtX = 306;
+                const amtY = 333 + ((427 - 333) / 2);
+                ctx.font = 'bold 40px Arial, sans-serif';
+                ctx.fillStyle = '#000000';
+                ctx.textAlign = 'left';
+                ctx.fillText(`₹${amt}`, amtX, amtY);
+
+                // Area 2: Name - coords (241,633,1178,719)
+                const nameX = 241;
+                const nameY = 633 + ((719 - 633) / 2);
+                ctx.font = 'bold 50px Arial, sans-serif';
+                ctx.fillStyle = '#751d08';
                 ctx.textAlign = 'left';
                 ctx.fillText(userName.toUpperCase(), nameX, nameY);
 
-                // Area 2: Quantity
-                const qtyX = 774;
-                const qtyY = 765 + ((802 - 765) / 2) + 10;
-                ctx.font = 'bold 30px Arial, sans-serif';
-                ctx.fillText(String(qty), qtyX, qtyY);
-
-                // Area 3: Amount
-                const amtX = 754;
-                const amtY = 821 + ((855 - 821) / 2) + 10;
-                ctx.fillText(`₹${amt}`, amtX, amtY);
+                // Quantity hidden
 
                 // Convert to blob and replace document
                 canvas.toBlob((blob) => {
@@ -94,9 +94,9 @@ const NameWithPoster: React.FC = () => {
             const ctx = canvas.getContext('2d');
             const img = new Image();
 
-            // Original dimensions (same as Receipt.tsx)
-            canvas.width = 1200;
-            canvas.height = 1550;
+            // Original dimensions (new image size)
+            canvas.width = 1937;
+            canvas.height = 2560;
             img.src = '/recipt.jpeg';
 
             await new Promise((resolve, reject) => {
@@ -105,28 +105,26 @@ const NameWithPoster: React.FC = () => {
             });
 
             if (ctx) {
-                ctx.drawImage(img, 0, 0, 1200, 1550);
-                ctx.fillStyle = '#751d08';
+                ctx.drawImage(img, 0, 0, 1937, 2560);
                 ctx.textBaseline = 'middle';
 
-                // Area 1: Name
-                const nameX = 201;
-                const nameY = 528 + ((583 - 528) / 2);
-                ctx.font = 'bold 28px Arial, sans-serif';
+                // Area 1: Amount - coords (306,333,812,427)
+                const amtX = 306;
+                const amtY = 333 + ((427 - 333) / 2);
+                ctx.font = 'bold 40px Arial, sans-serif';
+                ctx.fillStyle = '#000000';
+                ctx.textAlign = 'left';
+                ctx.fillText(`₹${amount}`, amtX, amtY);
+
+                // Area 2: Name - coords (241,633,1178,719)
+                const nameX = 241;
+                const nameY = 633 + ((719 - 633) / 2);
+                ctx.font = 'bold 50px Arial, sans-serif';
+                ctx.fillStyle = '#751d08';
                 ctx.textAlign = 'left';
                 ctx.fillText(name.toUpperCase(), nameX, nameY);
 
-                // Area 2: Quantity
-                const qtyX = 774;
-                const qtyY = 765 + ((802 - 765) / 2) + 10;
-                ctx.font = 'bold 30px Arial, sans-serif';
-                ctx.fillText(String(quantity), qtyX, qtyY);
-
-                // Area 3: Amount
-                const amtX = 754;
-                const amtY = 821 + ((855 - 821) / 2) + 10;
-                ctx.font = 'bold 30px Arial, sans-serif';
-                ctx.fillText(`₹${amount}`, amtX, amtY);
+                // Quantity hidden
 
                 const dataUrl = canvas.toDataURL('image/jpeg', 0.9);
                 const link = document.createElement('a');
@@ -151,9 +149,9 @@ const NameWithPoster: React.FC = () => {
             const ctx = canvas.getContext('2d');
             const img = new Image();
 
-            // Original dimensions (same as Receipt.tsx)
-            canvas.width = 1200;
-            canvas.height = 1550;
+            // Original dimensions (new image size)
+            canvas.width = 1937;
+            canvas.height = 2560;
             img.src = '/recipt.jpeg';
 
             await new Promise((resolve, reject) => {
@@ -162,27 +160,26 @@ const NameWithPoster: React.FC = () => {
             });
 
             if (ctx) {
-                ctx.drawImage(img, 0, 0, 1200, 1550);
-                ctx.fillStyle = '#751d08';
+                ctx.drawImage(img, 0, 0, 1937, 2560);
                 ctx.textBaseline = 'middle';
 
-                // Area 1: Name
-                const nameX = 201;
-                const nameY = 528 + ((583 - 528) / 2);
-                ctx.font = 'bold 28px Arial, sans-serif';
+                // Area 1: Amount - coords (306,333,812,427)
+                const amtX = 306;
+                const amtY = 333 + ((427 - 333) / 2);
+                ctx.font = 'bold 40px Arial, sans-serif';
+                ctx.fillStyle = '#000000';
+                ctx.textAlign = 'left';
+                ctx.fillText(`₹${amount}`, amtX, amtY);
+
+                // Area 2: Name - coords (241,633,1178,719)
+                const nameX = 241;
+                const nameY = 633 + ((719 - 633) / 2);
+                ctx.font = 'bold 50px Arial, sans-serif';
+                ctx.fillStyle = '#751d08';
                 ctx.textAlign = 'left';
                 ctx.fillText(name.toUpperCase(), nameX, nameY);
 
-                // Area 2: Quantity
-                const qtyX = 774;
-                const qtyY = 765 + ((802 - 765) / 2) + 10;
-                ctx.font = 'bold 24px Arial, sans-serif';
-                ctx.fillText(String(quantity), qtyX, qtyY);
-
-                // Area 3: Amount
-                const amtX = 754;
-                const amtY = 821 + ((855 - 821) / 2) + 10;
-                ctx.fillText(`₹${amount}`, amtX, amtY);
+                // Quantity hidden
 
                 const dataUrl = canvas.toDataURL('image/jpeg', 0.9);
                 const blob = await (await fetch(dataUrl)).blob();
@@ -255,14 +252,30 @@ const NameWithPoster: React.FC = () => {
                                 className="w-full h-auto block"
                             />
 
-                            {/* Area 1: Name - coords="201,528,802,583" */}
+                            {/* Area 1: Amount - coords="306,333,812,427" */}
                             <div
                                 className="absolute flex items-center overflow-hidden"
                                 style={{
-                                    left: '16.75%',     // 201/1200 * 100
-                                    top: '34.06%',      // 528/1550 * 100
-                                    width: '50.08%',    // (802-201)/1200 * 100
-                                    height: '3.55%',    // (583-528)/1550 * 100
+                                    left: '15.8%',
+                                    top: '13.0%',
+                                    width: '26.1%',
+                                    height: '3.67%',
+                                    color: '#000000ff',
+                                }}
+                            >
+                                <span className="font-bold text-[2vw] sm:text-[1.5vw] md:text-xs lg:text-sm text-left leading-none">
+                                    ₹{amount}
+                                </span>
+                            </div>
+
+                            {/* Area 2: Name - coords="241,633,1178,719" */}
+                            <div
+                                className="absolute flex items-center overflow-hidden"
+                                style={{
+                                    left: '12.44%',
+                                    top: '24.72%',
+                                    width: '48.37%',
+                                    height: '3.36%',
                                     color: '#751d08',
                                 }}
                             >
@@ -271,37 +284,7 @@ const NameWithPoster: React.FC = () => {
                                 </span>
                             </div>
 
-                            {/* Area 2: Order/Quantity - coords="774,765,1115,802" */}
-                            <div
-                                className="absolute flex items-center overflow-hidden"
-                                style={{
-                                    left: '64.5%',      // 774/1200 * 100
-                                    top: '50%',         // (765+10)/1550 * 100
-                                    width: '28.42%',    // (1115-774)/1200 * 100
-                                    height: '2.39%',    // (802-765)/1550 * 100
-                                    color: '#000000ff',
-                                }}
-                            >
-                                <span className="font-bold text-[2vw] sm:text-[1.5vw] md:text-xs lg:text-sm text-left leading-none">
-                                    {quantity}
-                                </span>
-                            </div>
-
-                            {/* Area 3: Amount - coords="754,821,1112,855" */}
-                            <div
-                                className="absolute flex items-center overflow-hidden"
-                                style={{
-                                    left: '62.83%',     // 754/1200 * 100
-                                    top: '53.61%',      // (821+10)/1550 * 100
-                                    width: '29.83%',    // (1112-754)/1200 * 100
-                                    height: '2.19%',    // (855-821)/1550 * 100
-                                    color: '#000000ff',
-                                }}
-                            >
-                                <span className="font-bold text-[2vw] sm:text-[1.5vw] md:text-xs lg:text-sm text-left leading-none">
-                                    ₹{amount}
-                                </span>
-                            </div>
+                            {/* Quantity Hidden */}
                         </div>
                     </div>
 
