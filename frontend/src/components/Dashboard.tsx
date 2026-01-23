@@ -121,9 +121,9 @@ const Dashboard: React.FC = () => {
                 <header className="flex justify-between items-center backdrop-blur-xl bg-white/80 p-4 md:p-5 rounded-2xl border border-sky-100 sticky top-4 z-50 shadow-xl">
                     <div>
                         <h1 className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-sky-600 to-blue-500 drop-shadow-lg">
-                            MYL-msf thiruvegappura panchayath
+                            MYL-msf thiruvegappura
                         </h1>
-                        <p className="text-gray-600 text-xs md:text-sm font-medium">EETHAPPAZHA BIG SALE 2026</p>
+                        <p className="text-gray-600 text-xs md:text-sm font-medium">EETHAPPAZHA CHALLENGE</p>
                     </div>
                     <div className="flex gap-3 md:gap-4 items-center">
                         <button
@@ -202,7 +202,7 @@ const Dashboard: React.FC = () => {
                                 <div className="p-2 bg-yellow-100 rounded-lg border border-yellow-200">
                                     <Trophy className="text-yellow-600 w-6 h-6" />
                                 </div>
-                                <h2 className="text-xl font-bold text-gray-800">Today's Top Purchasers</h2>
+                                <h2 className="text-xl font-bold text-gray-800">Today's Toppers</h2>
                             </div>
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">

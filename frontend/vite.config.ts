@@ -11,10 +11,10 @@ export default defineConfig({
       injectRegister: 'auto',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
       manifest: {
-        name: 'MYL-msf thiruvegappura panchayath EETHAPPAZHA BIG SALE',
-        short_name: 'MYL-msf',
-        description: 'MYL-msf thiruvegappura panchayath EETHAPPAZHA BIG SALE 2026',
-        theme_color: '#0d9488',
+        name: 'MYL- msf thiruvegappura',
+        short_name: 'MYL- msf thiruvegappura',
+        description: 'MYL- msf thiruvegappura',
+        theme_color: '#ffffffff',
         icons: [
           {
             src: 'pwa-192x192.png',
