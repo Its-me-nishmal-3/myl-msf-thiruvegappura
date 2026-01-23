@@ -235,11 +235,14 @@ const PosterGenerator: React.FC = () => {
         // Convert input to uppercase
         const text = name.toUpperCase();
 
-        // Center point
-        const centerX = x + w / 2;
+        // Align left with some padding
+        const textX = x + (20 * scale); // 20px padding from left
         const centerY = y + h / 2;
 
-        ctx.fillText(text, centerX, centerY);
+        ctx.textAlign = 'left';
+        // Use w - (padding * 2) as max width to prevent overflow
+        const maxWidth = w - (40 * scale);
+        ctx.fillText(text, textX, centerY, maxWidth);
         ctx.restore();
     };
 
