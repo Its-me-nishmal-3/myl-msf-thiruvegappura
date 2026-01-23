@@ -350,7 +350,7 @@ const PosterGenerator: React.FC = () => {
 
             {/* Cropper Modal */}
             {isCropping && tempImage && (
-                <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex flex-col">
+                <div className="fixed inset-0 z-[1000] bg-black/80 backdrop-blur-sm flex flex-col h-[100dvh]">
                     <div className="relative flex-1 w-full bg-black">
                         <Cropper
                             image={tempImage}
