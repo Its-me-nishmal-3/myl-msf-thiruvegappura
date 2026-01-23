@@ -107,7 +107,7 @@ const Receipt: React.FC = () => {
                     <div
                         className="absolute flex items-center overflow-hidden"
                         style={{
-                            left: '15.8%',
+                            left: '15.9%',
                             top: '13.0%',
                             width: '26.1%',
                             height: '3.67%',
@@ -115,7 +115,7 @@ const Receipt: React.FC = () => {
                         }}
                     >
                         <span className="font-bold text-[2vw] sm:text-[1.5vw] md:text-xs lg:text-sm text-left leading-none">
-                            ₹{payment.amount || (payment.quantity * 350)}
+                            {payment.amount || (payment.quantity * 350)}
                         </span>
                     </div>
 
@@ -132,7 +132,7 @@ const Receipt: React.FC = () => {
                             top: '24.72%',
                             width: '48.37%',
                             height: '3.36%',
-                            color: '#751d08',
+                            color: '#000000ff',
                         }}
                     >
                         <span className="font-bold text-[2.5vw] sm:text-[1.8vw] md:text-sm lg:text-base uppercase tracking-wide truncate w-full text-left leading-none">

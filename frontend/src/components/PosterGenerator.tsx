@@ -100,13 +100,13 @@ const PosterGenerator: React.FC = () => {
     const [croppedAreaPixels, setCroppedAreaPixels] = useState<Area | null>(null);
 
     // Coordinates configuration
-    // Based on new image map for challenge_frame_new.png (1200x1551)
-    // Photo: coords="219,642,583,1077" (left,top,right,bottom) -> x=219, y=642, w=364, h=435
-    // Name: coords="192,1118,711,1182" (left,top,right,bottom) -> x=192, y=1118, w=519, h=64
+    // Based on user provided image (1707x2560)
+    // Photo: coords="314,1545,796,2167" (left,top,right,bottom) -> x=314, y=1545, w=482, h=622
+    // Name: coords="312,2199,1034,2295" (left,top,right,bottom) -> x=312, y=2199, w=722, h=96
     const COORDS = {
-        PHOTO: { x: 219, y: 642, w: 364, h: 435 },
-        NAME: { x: -40, y: 1118, w: 519, h: 64 },
-        TEMPLATE_SRC: '/challenge_frame_new.png'
+        PHOTO: { x: 314, y: 1545, w: 482, h: 622 },
+        NAME: { x: 312, y: 2199, w: 722, h: 96 },
+        TEMPLATE_SRC: '/challenge-frame.png'
     };
 
     // Load template image on mount
@@ -136,8 +136,8 @@ const PosterGenerator: React.FC = () => {
         canvas.width = templateImage.naturalWidth;
         canvas.height = templateImage.naturalHeight;
 
-        // The coordinates are based on actual image dimensions (1200x1551)
-        const REFERENCE_WIDTH = 1200; // Actual image width
+        // The coordinates are based on actual image dimensions (1707x2560)
+        const REFERENCE_WIDTH = 1707; // Actual image width
         const scale = canvas.width / REFERENCE_WIDTH;
 
         // console.log("Canvas Size:", canvas.width, canvas.height, "Scale Factor:", scale); 
