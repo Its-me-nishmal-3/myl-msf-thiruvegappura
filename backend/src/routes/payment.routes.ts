@@ -15,16 +15,12 @@ const razorpay = new Razorpay({
 // Helper function to send WhatsApp notification asynchronously
 const sendWhatsAppNotification = async (name: string, quantity: number, amount: number, mobile: string) => {
     try {
-        const url = new URL('https://wa-simple-otp.onrender.com/send-myl');
+        const url = new URL('https://wa-otp-msf-myl-thiruvegappura.onrender.com/send-myl');
         url.searchParams.append('name', name);
         url.searchParams.append('quantity', quantity.toString());
         url.searchParams.append('amount', amount.toString());
         url.searchParams.append('mobile', `91${mobile}`);
-        url.searchParams.append('caption', `മുസ്‌ലിം യൂത്ത് ലീഗ് തിരുവേഗപ്പുറ പഞ്ചായത്ത്‌ കമ്മറ്റിയുടെ ഈത്തപ്പഴം ബിഗ് സെയിലിൽ താങ്കൾ പങ്കാളിയായതിന് നന്ദി.
-നാഥൻ സ്വീകരിക്കട്ടെ...
-
-        സ്നേഹത്തോടെ 
-മുസ്‌ലിം യൂത്ത് ലീഗ് തിരുവേഗപ്പുറ പഞ്ചായത്ത്‌ കമ്മിറ്റി`);
+        url.searchParams.append('caption', `ഈത്തപ്പഴ ചാലഞ്ചിൽ പങ്കാളിയായതിന് നന്ദി! 🙏✨`);
 
         const response = await fetch(url.toString());
         if (!response.ok) {
