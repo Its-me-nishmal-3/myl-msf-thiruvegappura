@@ -8,12 +8,21 @@ import { IndianRupee, Trophy, Crown } from 'lucide-react';
 
 // Assets
 import mainImage from '../assets/main__ .jpeg';
-import banner1 from '../assets/WhatsApp Image 2026-01-22 at 9.56.54 AM.jpeg';
-import banner2 from '../assets/WhatsApp Image 2026-01-22 at 9.56.55 AM.jpeg';
-import banner3 from '../assets/WhatsApp Image 2026-01-22 at 9.56.57 AM (1).jpeg';
-import banner4 from '../assets/WhatsApp Image 2026-01-22 at 9.56.57 AM.jpeg';
-import banner5 from '../assets/WhatsApp Image 2026-01-22 at 9.56.58 AM.jpeg';
-import banner6 from '../assets/WhatsApp Image 2026-01-22 at 9.56.57 AM.jpeg';
+import banner1 from '../assets/WhatsApp Image 2026-01-22 at 9.56.54 AM (1).jpeg';
+import banner2 from '../assets/WhatsApp Image 2026-01-22 at 9.56.54 AM.jpeg';
+import banner3 from '../assets/WhatsApp Image 2026-01-22 at 9.56.55 AM.jpeg';
+import banner4 from '../assets/WhatsApp Image 2026-01-22 at 9.56.57 AM (1).jpeg';
+import banner5 from '../assets/WhatsApp Image 2026-01-22 at 9.56.57 AM.jpeg';
+import banner6 from '../assets/WhatsApp Image 2026-01-22 at 9.56.58 AM.jpeg';
+import banner7 from '../assets/WhatsApp Image 2026-01-24 at 1.12.38 AM.jpeg';
+import banner8 from '../assets/WhatsApp Image 2026-01-24 at 1.12.39 AM.jpeg';
+import banner9 from '../assets/WhatsApp Image 2026-01-24 at 1.12.41 AM.jpeg';
+import banner10 from '../assets/WhatsApp Image 2026-01-24 at 1.12.44 AM.jpeg';
+import banner11 from '../assets/WhatsApp Image 2026-01-24 at 1.12.45 AM (1).jpeg';
+import banner12 from '../assets/WhatsApp Image 2026-01-24 at 1.12.45 AM.jpeg';
+import banner13 from '../assets/WhatsApp Image 2026-01-24 at 1.12.46 AM.jpeg';
+import banner14 from '../assets/WhatsApp Image 2026-01-24 at 1.12.47 AM.jpeg';
+import banner15 from '../assets/WhatsApp Image 2026-01-24 at 1.14.10 AM.jpeg';
 
 const SOCKET_URL = 'https://myl-msf-thiruvegappura.onrender.com';
 
@@ -23,7 +32,7 @@ const UNIT_NAMES = [
     'നോർത്ത് കൈപ്പുറം', 'മനക്കൽ പീടിക', 'ഞാവളുംകാട്', 'ചെമ്പ്ര', 'Other'
 ];
 
-const BANNERS = [banner1, banner2, banner3, banner4, banner5, banner6];
+const BANNERS = [banner1, banner2, banner3, banner4, banner5, banner6, banner7, banner8, banner9, banner10, banner11, banner12, banner13, banner14, banner15];
 
 interface Stats {
     totalAmount: number;
@@ -37,6 +46,7 @@ const Dashboard: React.FC = () => {
     const [stats, setStats] = useState<Stats>({ totalAmount: 0, totalCount: 0, wardWise: {} });
     const [todaysToppers, setTodaysToppers] = useState<{ _id: string; name: string; ward: string; totalQuantity: number; totalAmount: number }[]>([]);
     const [showModal, setShowModal] = useState(false);
+    const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
     const [isWelcomeExpanded, setIsWelcomeExpanded] = useState(() => {
         const saved = localStorage.getItem('welcomeExpanded');
         return saved !== null ? JSON.parse(saved) : true;
@@ -104,6 +114,15 @@ const Dashboard: React.FC = () => {
         return () => {
             socket.disconnect();
         };
+    }, []);
+
+    // Auto-change carousel every 4 seconds
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentBannerIndex((prevIndex) => (prevIndex + 1) % BANNERS.length);
+        }, 4000);
+
+        return () => clearInterval(interval);
     }, []);
 
     return (
@@ -326,26 +345,68 @@ const Dashboard: React.FC = () => {
 
                 </div>
 
-                {/* Banner Gallery */}
+                {/* Auto-Changing Carousel */}
                 <div className="space-y-4">
                     <h3 className="text-xl font-bold text-gray-800 pl-2 border-l-4 border-sky-600">Gallery</h3>
-                    <div className="flex overflow-x-auto gap-4 pb-4 snap-x snap-mandatory scrollbar-hide">
-                        {BANNERS.map((banner, idx) => (
+                    <div className="relative w-full h-64 md:h-96 rounded-2xl overflow-hidden shadow-lg border border-sky-100 group">
+                        {/* Carousel Images */}
+                        <AnimatePresence mode="wait">
                             <motion.div
-                                key={idx}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true }}
-                                className="min-w-[280px] md:min-w-[350px] h-48 md:h-64 rounded-2xl overflow-hidden snap-center shadow-lg border border-sky-100 relative group"
+                                key={currentBannerIndex}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.7 }}
+                                className="absolute inset-0"
                             >
                                 <img
-                                    src={banner}
-                                    alt={`Banner ${idx + 1}`}
-                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                    src={BANNERS[currentBannerIndex]}
+                                    alt={`Banner ${currentBannerIndex + 1}`}
+                                    className="w-full h-full object-cover"
                                 />
-                                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
+                                <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors" />
                             </motion.div>
-                        ))}
+                        </AnimatePresence>
+
+                        {/* Navigation Arrows */}
+                        <button
+                            onClick={() => setCurrentBannerIndex((prevIndex) => (prevIndex - 1 + BANNERS.length) % BANNERS.length)}
+                            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all hover:scale-110 z-10"
+                            aria-label="Previous image"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-800">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </button>
+                        <button
+                            onClick={() => setCurrentBannerIndex((prevIndex) => (prevIndex + 1) % BANNERS.length)}
+                            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all hover:scale-110 z-10"
+                            aria-label="Next image"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-800">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+
+                        {/* Dot Indicators */}
+                        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                            {BANNERS.map((_, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => setCurrentBannerIndex(index)}
+                                    className={`transition-all ${index === currentBannerIndex
+                                            ? 'w-8 h-2 bg-white'
+                                            : 'w-2 h-2 bg-white/50 hover:bg-white/75'
+                                        } rounded-full`}
+                                    aria-label={`Go to image ${index + 1}`}
+                                />
+                            ))}
+                        </div>
+
+                        {/* Image Counter */}
+                        <div className="absolute top-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm font-medium">
+                            {currentBannerIndex + 1} / {BANNERS.length}
+                        </div>
                     </div>
                 </div>
 
