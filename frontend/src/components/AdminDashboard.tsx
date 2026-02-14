@@ -8,7 +8,7 @@ import {
 } from 'recharts';
 import { io } from 'socket.io-client';
 import jsPDF from 'jspdf';
-import autoTable from 'jspdf-autotable';
+import html2canvas from 'html2canvas';
 
 const SOCKET_URL = 'https://myl-msf-thiruvegappura.onrender.com';
 
@@ -69,28 +69,18 @@ const AdminDashboard: React.FC = () => {
     });
 
     const exportPDF = () => {
-        const doc = new jsPDF();
-        
-        doc.text('Payments Report', 14, 20);
-        doc.setFontSize(10);
-        doc.text(`Generated on: ${new Date().toLocaleDateString()}`, 14, 28);
+        const input = document.getElementById('payments-table');
+        if (!input) return;
 
-        autoTable(doc, {
-            startY: 35,
-            head: [['Date', 'Name', 'Mobile', 'Unit', 'Qty', 'Amount', 'Status', 'Payment ID']],
-            body: filteredPayments.map(p => [
-                new Date(p.createdAt).toLocaleDateString(),
-                p.name,
-                p.mobile,
-                p.ward,
-                p.quantity,
-                p.amount,
-                p.status,
-                p.paymentId
-            ]),
+        html2canvas(input, { scale: 2, useCORS: true }).then((canvas) => {
+            const imgData = canvas.toDataURL('image/png');
+            const pdf = new jsPDF('p', 'mm', 'a4');
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+            const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+
+            pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+            pdf.save('payments_report.pdf');
         });
-        
-        doc.save('payments_report.pdf');
     };
 
     const fetchPayments = async () => {
@@ -328,7 +318,7 @@ const AdminDashboard: React.FC = () => {
                         </select>
 
                         <div className="flex gap-2">
-                             <input
+                            <input
                                 type="date"
                                 value={startDate}
                                 onChange={(e) => setStartDate(e.target.value)}
@@ -342,18 +332,18 @@ const AdminDashboard: React.FC = () => {
                             />
                         </div>
 
-                         <button
+                        <button
                             onClick={exportPDF}
                             className="w-full md:w-auto px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg flex items-center justify-center gap-2 transition-colors"
                         >
-                           Download PDF
+                            Download PDF
                         </button>
                     </div>
 
                     {/* Table */}
                     <div className="bg-white/90 backdrop-blur-xl border border-sky-100 rounded-2xl shadow-lg overflow-hidden">
                         <div className="overflow-x-auto">
-                            <table className="w-full text-left">
+                            <table id="payments-table" className="w-full text-left">
                                 <thead className="bg-gray-50 text-gray-600 border-b border-gray-200">
                                     <tr>
                                         <th className="p-4">Date</th>
