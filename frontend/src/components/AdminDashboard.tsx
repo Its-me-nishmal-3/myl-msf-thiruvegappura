@@ -72,17 +72,32 @@ const AdminDashboard: React.FC = () => {
         const input = document.getElementById('payments-table');
         if (!input) return;
 
-        toPng(input, { cacheBust: true })
+        toPng(input, { cacheBust: true, backgroundColor: '#ffffff' })
             .then((dataUrl) => {
                 const pdf = new jsPDF('p', 'mm', 'a4');
+                const imgProps = pdf.getImageProperties(dataUrl);
                 const pdfWidth = pdf.internal.pageSize.getWidth();
-                const pdfHeight = (input.offsetHeight * pdfWidth) / input.offsetWidth;
+                const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+                const pageHeight = pdf.internal.pageSize.getHeight();
 
-                pdf.addImage(dataUrl, 'PNG', 0, 0, pdfWidth, pdfHeight);
+                let heightLeft = pdfHeight;
+                let position = 0;
+
+                pdf.addImage(dataUrl, 'PNG', 0, position, pdfWidth, pdfHeight);
+                heightLeft -= pageHeight;
+
+                while (heightLeft > 0) {
+                    position -= pageHeight;
+                    pdf.addPage();
+                    pdf.addImage(dataUrl, 'PNG', 0, position, pdfWidth, pdfHeight);
+                    heightLeft -= pageHeight;
+                }
+
                 pdf.save('payments_report.pdf');
             })
             .catch((err) => {
                 console.error('Error generating PDF:', err);
+                alert('Error generating PDF. Please try filtering a smaller date range.');
             });
     };
 
