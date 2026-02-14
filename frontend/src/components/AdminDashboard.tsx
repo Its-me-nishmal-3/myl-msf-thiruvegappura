@@ -7,6 +7,8 @@ import {
     LineChart, Line
 } from 'recharts';
 import { io } from 'socket.io-client';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
 
 const SOCKET_URL = 'https://myl-msf-thiruvegappura.onrender.com';
 
@@ -39,7 +41,57 @@ const AdminDashboard: React.FC = () => {
     const [analytics, setAnalytics] = useState<Analytics | null>(null);
     const [search, setSearch] = useState('');
     const [wardFilter, setWardFilter] = useState('All');
+    const [statusFilter, setStatusFilter] = useState('All');
+    const [startDate, setStartDate] = useState('');
+    const [endDate, setEndDate] = useState('');
     const navigate = useNavigate();
+
+    const filteredPayments = payments.filter(payment => {
+        let matches = true;
+
+        if (statusFilter !== 'All' && payment.status !== statusFilter.toLowerCase()) {
+            matches = false;
+        }
+
+        if (startDate) {
+            const pDate = new Date(payment.createdAt).setHours(0, 0, 0, 0);
+            const sDate = new Date(startDate).setHours(0, 0, 0, 0);
+            if (pDate < sDate) matches = false;
+        }
+
+        if (endDate) {
+            const pDate = new Date(payment.createdAt).setHours(0, 0, 0, 0);
+            const eDate = new Date(endDate).setHours(23, 59, 59, 999);
+            if (pDate > eDate) matches = false;
+        }
+
+        return matches;
+    });
+
+    const exportPDF = () => {
+        const doc = new jsPDF();
+        
+        doc.text('Payments Report', 14, 20);
+        doc.setFontSize(10);
+        doc.text(`Generated on: ${new Date().toLocaleDateString()}`, 14, 28);
+
+        autoTable(doc, {
+            startY: 35,
+            head: [['Date', 'Name', 'Mobile', 'Unit', 'Qty', 'Amount', 'Status', 'Payment ID']],
+            body: filteredPayments.map(p => [
+                new Date(p.createdAt).toLocaleDateString(),
+                p.name,
+                p.mobile,
+                p.ward,
+                p.quantity,
+                p.amount,
+                p.status,
+                p.paymentId
+            ]),
+        });
+        
+        doc.save('payments_report.pdf');
+    };
 
     const fetchPayments = async () => {
         const token = localStorage.getItem('adminToken');
@@ -236,12 +288,13 @@ const AdminDashboard: React.FC = () => {
             {activeTab === 'payments' && (
                 <div className="animate-in fade-in zoom-in duration-300">
                     {/* Filters */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    {/* Filters */}
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
                         <div className="relative">
                             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" size={20} />
                             <input
                                 type="text"
-                                placeholder="Search Name, Mobile, or Payment ID"
+                                placeholder="Search Name, Mobile, or ID"
                                 value={search}
                                 onChange={(e) => setSearch(e.target.value)}
                                 className="w-full pl-10 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-900"
@@ -251,17 +304,50 @@ const AdminDashboard: React.FC = () => {
                         <select
                             value={wardFilter}
                             onChange={(e) => setWardFilter(e.target.value)}
-                            className="w-full pl-4 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-900"
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-900"
                         >
-                            <option value="All" className="bg-white text-gray-900">All Units</option>
+                            <option value="All">All Units</option>
                             {[
                                 'തിരുവേഗപ്പുറ', 'മൂച്ചിത്തറ', 'വെസ്റ്റ് കൈപ്പുറം', 'ഫാറൂഖ് നഗർ', 'കൈപ്പുറം',
                                 'വിളത്തൂർ', 'തെക്കുമ്മല', 'മാഞ്ഞാമ്പ്ര', 'പൈലിപ്പുറം', 'നെടുങ്ങോട്ടൂർ',
                                 'നോർത്ത് കൈപ്പുറം', 'മനക്കൽ പീടിക', 'ഞാവളുംകാട്', 'ചെമ്പ്ര', 'Other'
                             ].map((ward, i) => (
-                                <option key={i} value={ward} className="bg-white text-gray-900">{ward}</option>
+                                <option key={i} value={ward}>{ward}</option>
                             ))}
                         </select>
+
+                        <select
+                            value={statusFilter}
+                            onChange={(e) => setStatusFilter(e.target.value)}
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-900"
+                        >
+                            <option value="All">All Status</option>
+                            <option value="Success">Success</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Failed">Failed</option>
+                        </select>
+
+                        <div className="flex gap-2">
+                             <input
+                                type="date"
+                                value={startDate}
+                                onChange={(e) => setStartDate(e.target.value)}
+                                className="w-1/2 px-2 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-900 text-sm"
+                            />
+                            <input
+                                type="date"
+                                value={endDate}
+                                onChange={(e) => setEndDate(e.target.value)}
+                                className="w-1/2 px-2 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-900 text-sm"
+                            />
+                        </div>
+
+                         <button
+                            onClick={exportPDF}
+                            className="w-full md:w-auto px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg flex items-center justify-center gap-2 transition-colors"
+                        >
+                           Download PDF
+                        </button>
                     </div>
 
                     {/* Table */}
@@ -281,12 +367,12 @@ const AdminDashboard: React.FC = () => {
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-gray-100">
-                                    {payments.length === 0 ? (
+                                    {filteredPayments.length === 0 ? (
                                         <tr>
-                                            <td colSpan={7} className="p-8 text-center text-gray-500">No payments found</td>
+                                            <td colSpan={8} className="p-8 text-center text-gray-500">No payments found</td>
                                         </tr>
                                     ) : (
-                                        payments.map((p) => (
+                                        filteredPayments.map((p) => (
                                             <tr key={p._id} className="hover:bg-gray-50 transition-colors">
                                                 <td className="p-4 text-sm text-gray-600">{new Date(p.createdAt).toLocaleDateString()}</td>
                                                 <td className="p-4 font-semibold">{p.name}</td>
