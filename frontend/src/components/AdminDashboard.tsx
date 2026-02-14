@@ -7,8 +7,7 @@ import {
     LineChart, Line
 } from 'recharts';
 import { io } from 'socket.io-client';
-import jsPDF from 'jspdf';
-import { toPng } from 'html-to-image';
+import * as XLSX from 'xlsx';
 
 const SOCKET_URL = 'https://myl-msf-thiruvegappura.onrender.com';
 
@@ -68,81 +67,22 @@ const AdminDashboard: React.FC = () => {
         return matches;
     });
 
-    const exportPDF = async () => {
-        const table = document.getElementById('payments-table') as HTMLTableElement;
-        if (!table) return;
+    const exportExcel = () => {
+        const data = filteredPayments.map(p => ({
+            Date: new Date(p.createdAt).toLocaleDateString(),
+            Name: p.name,
+            Mobile: p.mobile,
+            Unit: p.ward,
+            Qty: p.quantity,
+            Amount: p.amount,
+            Status: p.status,
+            'Payment ID': p.paymentId
+        }));
 
-        try {
-            const pdf = new jsPDF('p', 'mm', 'a4');
-            const pageWidth = 210;
-            const pageHeight = 297;
-            const margin = 10;
-            const imageWidth = pageWidth - (margin * 2);
-
-            // Clone container to render chunks off-screen
-            const cloneContainer = document.createElement('div');
-            cloneContainer.style.position = 'absolute';
-            cloneContainer.style.top = '-9999px';
-            cloneContainer.style.left = '0';
-            cloneContainer.style.width = `${table.offsetWidth}px`; // Match original width
-            cloneContainer.className = 'bg-white'; // Ensure white background
-            document.body.appendChild(cloneContainer);
-
-            // Create template table (Header only)
-            const templateTable = table.cloneNode(true) as HTMLTableElement;
-            const templateTbody = templateTable.querySelector('tbody');
-            if (templateTbody) templateTbody.innerHTML = '';
-            cloneContainer.appendChild(templateTable);
-
-            // Calculate metrics
-            const scale = imageWidth / table.offsetWidth;
-            const maxPxHeight = (pageHeight - (margin * 2)) / scale;
-            const headerHeight = templateTable.querySelector('thead')?.offsetHeight || 0;
-
-            const rows = Array.from(table.querySelectorAll('tbody tr')) as HTMLElement[];
-            let currentRows: HTMLElement[] = [];
-            let currentHeight = headerHeight;
-            let pagesGenerated = 0;
-
-            const flushPage = async () => {
-                if (currentRows.length === 0) return;
-
-                if (templateTbody) {
-                    templateTbody.innerHTML = '';
-                    currentRows.forEach(row => templateTbody.appendChild(row.cloneNode(true)));
-                }
-
-                const dataUrl = await toPng(templateTable, { cacheBust: true, backgroundColor: '#ffffff' });
-                const imgProps = pdf.getImageProperties(dataUrl);
-                const pdfImgHeight = (imgProps.height * imageWidth) / imgProps.width;
-
-                if (pagesGenerated > 0) pdf.addPage();
-                pdf.addImage(dataUrl, 'PNG', margin, margin, imageWidth, pdfImgHeight);
-                pagesGenerated++;
-            };
-
-            for (const row of rows) {
-                const rowHeight = row.offsetHeight;
-
-                if (currentHeight + rowHeight > maxPxHeight) {
-                    await flushPage();
-                    currentRows = [];
-                    currentHeight = headerHeight;
-                }
-
-                currentRows.push(row);
-                currentHeight += rowHeight;
-            }
-
-            await flushPage();
-
-            document.body.removeChild(cloneContainer);
-            pdf.save('payments_report.pdf');
-
-        } catch (err) {
-            console.error('Error generating PDF:', err);
-            alert('Error generating PDF. Please try again.');
-        }
+        const ws = XLSX.utils.json_to_sheet(data);
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "Payments");
+        XLSX.writeFile(wb, "payments_report.xlsx");
     };
 
     const fetchPayments = async () => {
@@ -395,10 +335,10 @@ const AdminDashboard: React.FC = () => {
                         </div>
 
                         <button
-                            onClick={exportPDF}
+                            onClick={exportExcel}
                             className="w-full md:w-auto px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg flex items-center justify-center gap-2 transition-colors"
                         >
-                            Download PDF
+                            Download Excel
                         </button>
                     </div>
 
